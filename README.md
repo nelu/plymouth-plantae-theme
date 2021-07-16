@@ -7,8 +7,10 @@
 1. Install Plymouth themes and scripts dependencies:
 
 ```bash
-apt install -y plymouth-themes imagemagick ffmpeg
+apt install -y plymouth-themes ffmpeg
 ```
+
+`imagemagick` package is required for `gif-to-png.sh`
 
 2. Get this theme repository under /usr/share/plymouth/themes/plantae
 
@@ -37,17 +39,17 @@ gif-to-png.sh*  mp4-to-gif.sh*  mp4-to-png.sh*  set-loader.sh*
 invalid argument type:  . valid: mp4|gif
 
 ┌──(root💀kali)-[/usr/share/plymouth/themes/plantae]
+└─# ./set-loader.sh gif
+frame=   92 fps= 68 q=-0.0 Lsize=N/A time=00:00:03.06 bitrate=N/A speed=2.27x
+Wrote 92 png contents to: /usr/share/plymouth/themes/plantae/loader-content
+Done. Please run: 'update-initramfs -u' or 'plymouth-set-default-theme -R plantae' and reboot to see changes
+
+┌──(root💀kali)-[/usr/share/plymouth/themes/plantae]
 └─# ./set-loader.sh mp4
 Writing png contents to: /usr/share/plymouth/themes/plantae/output
-frame=   183 fps= 28 q=-0.0 Lsize=N/A time=00:00:03.00 bitrate=N/A speed=0.927x
+frame=   92 fps= 28 q=-0.0 Lsize=N/A time=00:00:03.00 bitrate=N/A speed=0.927x
 Wrote 183 png contents to: /usr/share/plymouth/themes/plantae/loader-content
 Done. Please run: 'update-initramfs -u' or 'plymouth-set-default-theme -R plantae' and reboot to see changes
-```
-3. To have the correct number of images in the sequence, open animated-boot.script and replace 
-["imagesInSequence"](animated-boot.script#L7)
- value with the number output images from step 2:
-```
-imagesInSequence=183;
 ```
 The converted output is found in "output" folder and animated-boot.script will read the image contents from "loader-content" folder
 
@@ -66,8 +68,7 @@ $ sudo update-initramfs -u
 ```
 And select the number for your theme (I can't say this for sure but if the theme you want is under 0 for the auto mode, then I would select that as I think it boots in faster than manual)
 
-
-Now reboot.
+- Now reboot
 
 View available themes:
 ```console 
