@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Plantae
+Description=Plantae Incubator Theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/plantae
+ScriptFile=/usr/share/plymouth/themes/plantae/animated-boot.script
