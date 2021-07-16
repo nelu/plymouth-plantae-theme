@@ -17,7 +17,7 @@ cd /usr/share/plymouth/themes \
 && rm -rf ./plantae && mkdir ./plantae \
 && curl https://codeload.github.com/nelu/plymouth-plantae-theme/tar.gz/refs/heads/main | tar -xzvf - --strip 1 -C ./plantae
 ```
-4. Move into your new theme folder and check available conversion scripts
+3. Move into your new theme folder and check available conversion scripts
 
 ```console
 cd /usr/share/plymouth/themes/plantae
@@ -43,7 +43,9 @@ frame=   183 fps= 28 q=-0.0 Lsize=N/A time=00:00:03.00 bitrate=N/A speed=0.927x
 Wrote 183 png contents to: /usr/share/plymouth/themes/plantae/loader-content
 Done. Please run: 'update-initramfs -u' or 'plymouth-set-default-theme -R plantae' and reboot to see changes
 ```
-3. To have the correct number of images in the sequence, open animated-boot.script and replace "imagesInSequence" value with the number output images from step 2:
+3. To have the correct number of images in the sequence, open animated-boot.script and replace 
+["imagesInSequence"](animated-boot.script#L7)
+ value with the number output images from step 2:
 ```
 imagesInSequence=183;
 ```
