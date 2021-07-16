@@ -43,14 +43,19 @@ frame=   183 fps= 28 q=-0.0 Lsize=N/A time=00:00:03.00 bitrate=N/A speed=0.927x
 Wrote 183 png contents to: /usr/share/plymouth/themes/plantae/loader-content
 Done. Please run: 'update-initramfs -u' or 'plymouth-set-default-theme -R plantae' and reboot to see changes
 ```
-4. To have the correct number of images in the sequence, open animated-boot.script and replace "imagesInSequence" value with the number output images from step 2:
+3. To have the correct number of images in the sequence, open animated-boot.script and replace "imagesInSequence" value with the number output images from step 2:
 ```
 imagesInSequence=183;
 ```
 The converted output is found in "output" folder and animated-boot.script will read the image contents from "loader-content" folder
 
 ### Theme installation
-- METHOD 1: Install and set the theme:
+- METHOD 1: the plymouth-set-default-theme command.
+This method works for raspbian also
+```console
+$ plymouth-set-default-theme -R plantae
+```
+- METHOD 2: Install and set the theme:
 ```console
 $ sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/plantae/plantae.plymouth 100
 
@@ -59,11 +64,9 @@ $ sudo update-initramfs -u
 ```
 And select the number for your theme (I can't say this for sure but if the theme you want is under 0 for the auto mode, then I would select that as I think it boots in faster than manual)
 
-- METHOD 2: the plymouth-set-default-theme command
 
-```console
-$ plymouth-set-default-theme -R plantae
-```
+Now reboot.
+
 View available themes:
 ```console 
 $ plymouth-set-default-theme -l
@@ -89,8 +92,6 @@ spinner
 text
 tribar
 ```
-
-4. Now reboot.
 
 If you want to install this on < Ubuntu 16.04, change the path from /usr/share/plymouth to /lib/plymouth/ . You need to do this on the eionix-cat.plymouth file also.
 
